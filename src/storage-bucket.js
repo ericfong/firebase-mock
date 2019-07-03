@@ -9,7 +9,7 @@ var MockStorageFile = require('./storage-file');
 
 function MockStorageBucket(storage, name) {
   this.storage = storage;
-  this.name = name;
+  this.name = name || 'DEFAULT';
   this.files = {};
   this.storage.buckets[name] = this;
 }

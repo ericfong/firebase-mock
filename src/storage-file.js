@@ -45,7 +45,7 @@ MockStorageFile.prototype.exists = function() {
 };
 
 MockStorageFile.prototype.getSignedUrl = function() {
-  return Promise.resolve([this.name]);
+  return Promise.resolve([`mockstorage:///${this.bucket.name}/${this.name}`]);
 };
 
 MockStorageFile.prototype.download = function(args) {
