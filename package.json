@@ -1,9 +1,10 @@
 {
   "name": "firebase-mock",
-  "version": "2.2.10",
+  "version": "2.2.10-pre1",
   "description": "Firebase mock library for writing unit tests",
   "main": "./src",
   "scripts": {
+    "predeploy": "gulp bundle",
     "test": "gulp lint && gulp test",
     "publish-patch": "git checkout master && git pull && gulp release && npm publish",
     "publish-minor": "git checkout master && git pull && gulp release --type minor && npm publish",
@@ -29,6 +30,7 @@
   "homepage": "https://github.com/soumak77/firebase-mock",
   "dependencies": {
     "firebase-auto-ids": "~1.1.0",
+    "fs-extra": "8.1.0",
     "lodash.assign": "^4.2.0",
     "lodash.assignin": "^4.2.0",
     "lodash.bind": "^4.2.1",

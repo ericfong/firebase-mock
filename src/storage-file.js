@@ -6,7 +6,13 @@
 'use strict';
 var Promise = require('rsvp').Promise;
 var fs = require('fs');
+const os = require('os')
+const Path = require('path')
+const fse = require('fs-extra')
 var _ = require('./lodash');
+
+const TMP_DIR = `${os.tmpdir()}/firebase-mock`
+fse.removeSync(TMP_DIR)
 
 function MockStorageFile(bucket, name) {
   this.bucket = bucket;
@@ -39,7 +45,7 @@ MockStorageFile.prototype.exists = function() {
 };
 
 MockStorageFile.prototype.getSignedUrl = function() {
-  return Promise.resolve(this.name);
+  return Promise.resolve([this.name]);
 };
 
 MockStorageFile.prototype.download = function(args) {
@@ -86,5 +92,19 @@ MockStorageFile.prototype.setMetadata = function(data) {
 MockStorageFile.prototype.getMetadata = function() {
   return Promise.resolve([_.clone(this._metadata), null]);
 };
+
+
+Object.assign(MockStorageFile.prototype, {
+  createReadStream(options) {
+    const filepath = `${TMP_DIR}/${this.bucket.name}/${this.name}`
+    fse.ensureDirSync(Path.dirname(filepath))
+    return fs.createReadStream(filepath)
+  },
+  createWriteStream(options) {
+    const filepath = `${TMP_DIR}/${this.bucket.name}/${this.name}`
+    fse.ensureDirSync(Path.dirname(filepath))
+    return fs.createWriteStream(filepath)
+  },
+})
 
 module.exports = MockStorageFile;
