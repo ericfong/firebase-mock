@@ -1,6 +1,6 @@
 'use strict';
 
-var _        = require('./lodash');
+var _        = require('lodash');
 var Snapshot = require('./snapshot');
 var utils    = require('./utils');
 

@@ -1,6 +1,6 @@
 'use strict';
 
-var _ = require('./lodash');
+var _ = require('lodash');
 
 function MockDataSnapshot (ref, data, priority) {
   this.ref = ref;

@@ -1,6 +1,6 @@
 'use strict';
 
-var _ = require('./lodash');
+var _ = require('lodash');
 var Slice    = require('./slice');
 var utils    = require('./utils');
 var validate = require('./validators');

@@ -9,7 +9,7 @@ var fs = require('fs');
 const os = require('os')
 const Path = require('path')
 const fse = require('fs-extra')
-var _ = require('./lodash');
+var _ = require('lodash');
 
 const TMP_DIR = `${os.tmpdir()}/firebase-mock`
 fse.removeSync(TMP_DIR)
