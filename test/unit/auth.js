@@ -9,7 +9,6 @@ chai.use(require('sinon-chai'))
 
 var expect = chai.expect
 var Authentication = require('../../').MockAuthentication
-var Promise = require('rsvp').Promise
 var User = require('../../src/user')
 
 describe('Auth', function() {

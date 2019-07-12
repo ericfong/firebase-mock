@@ -2,7 +2,6 @@
 
 var chai = require('chai')
 var sinon = require('sinon')
-var Promise = require('rsvp').Promise
 var _ = require('lodash')
 
 chai.use(require('chai-as-promised'))
